@@ -1,0 +1,4 @@
+name = "IntelITT"
+uuid = "4a09e4cd-0946-40c7-bf0b-7fff0296c535"
+authors = ["Christian Lehmann <dev@christianl.de>"]
+version = "0.1.0"
