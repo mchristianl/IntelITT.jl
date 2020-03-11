@@ -5,7 +5,7 @@ A wrapper for the [Intel Instrumentation and Tracing Technology APIs](https://so
 
 ## What works
 
-see `intelitttest.jl` file
+see [intelitttest.jl](examples/intelitttest.jl) file
 
 ## Installation requirements (Linux)
 
