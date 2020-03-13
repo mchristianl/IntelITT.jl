@@ -7,6 +7,15 @@ A wrapper for the [Intel Instrumentation and Tracing Technology APIs](https://so
 
 see [intelitttest.jl](examples/intelitttest.jl) file
 
+start and stop Intel VTune from within julia
+
+![pauseresume.png](pics/pauseresume.png)
+
+configure "user tasks" from within julia
+
+![toptasks.png](pics/toptasks.png)
+![taskgrouping.png](pics/taskgrouping.png)
+
 ## Installation requirements (Linux)
 
 This currently works with a shared object `libittnotify.so`. You need to modify its path in `IntelITT.jl`
