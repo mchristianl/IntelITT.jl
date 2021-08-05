@@ -18,13 +18,7 @@ configure "user tasks" from within julia
 
 ## Installation requirements (Linux)
 
-This currently works with a shared object `libittnotify.so`. You need to modify its path in `IntelITT.jl`
-
-```julia
-const LIBITTNOTIFY_PATH = joinpath(@__DIR__,"libittnotify.so")
-```
-
-The _other_ `libittnotify.so` is NOT distributed with Intel vtune amplifier/profiler.
+This currently works with a shared object `libittnotify.so` ...  but the _other_ `libittnotify.so` that is NOT distributed with Intel vtune amplifier/profiler.
 Intel vtune amplifier/profiler comes with a `libittnotify.a` instead.
 
 _(NOTE: there are `lib64/runtime/libittnotify.so` and `sdk/lib64/libittnotify.so` but it is `libittnotify.a` which is [meant to be used](https://software.intel.com/content/www/us/en/develop/documentation/vtune-help/top/api-support/instrumentation-and-tracing-technology-apis/basic-usage-and-configuration/configuring-your-build-system.html))_
@@ -88,13 +82,14 @@ While the JIT-events enable to see functions, somehow loops and assembly code ar
 That might be intentional. A way around this is to create a shared object with the compiled functions.
 
 I got this only working by [creating a separate Module](examples/IntelITTTest/src/IntelITTTest.jl) which contains the code to-be-tested.
-The process takes a while and it might be possible to do this _incrementally_ somehow ...
+The whole process takes a while and it might be possible to do this _incrementally_ somehow ... but this will save a lot of time during tracing lateron!
 
 ```bash
 cd examples
 julia --startup-file=no --trace-compile=trace.jl intelitttest.jl
 julia --startup-file=no --output-o customsys.o -J"/usr/lib/julia/sys.so" custom_sysimage.jl
-gcc -shared -o customsys.so -Wl,--whole-archive customsys.o -Wl,--no-whole-archive -L"/usr/lib/julia/" -ljulia
+gcc -shared -o customsys.so \
+  -Wl,--whole-archive customsys.o -Wl,--no-whole-archive -L"/usr/lib/julia/" -ljulia
 julia -Jcustomsys.so
 ```
 
@@ -112,7 +107,7 @@ To start the advisor gui, one needs to source a script which then makes `advisor
 ```bash
 . advisor/2021.3.0/env/vars.sh
 advisor-gui
-``
+```
 
 For the tracing, Advisor will complain when `ptrace_scope` is not 0 which I had to set on my system:
 
