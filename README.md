@@ -66,7 +66,7 @@ USE_PROFILE_JITEVENTS=1
 USE_PERF_JITEVENTS=1
 ```
 
-Due to a [current bug](https://discourse.julialang.org/t/compiling-fails-with-use-intel-jitevents-use-oprofile-jitevents-and-use-perf-jitevents-1/51274), I had to apply [a tiny patch](jitprofiling.patch) to Julia's sources for enabling all three kinds of JITEVENTS.
+Due to a [current bug](https://discourse.julialang.org/t/compiling-fails-with-use-intel-jitevents-use-oprofile-jitevents-and-use-perf-jitevents-1/51274) that [should be already fixed](https://github.com/JuliaLang/julia/pull/38741), I had to apply [a tiny patch](jitprofiling.patch) to Julia's sources for enabling all three kinds of JITEVENTS.
 
 For getting more symbols resolved in the Intel tools lateron, it might be helpful to disable "stripping" of the compiled binaries (`options=(!strip debug)` in Archlinux's PKGBUILD file) if that applies.
 
