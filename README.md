@@ -96,7 +96,8 @@ julia -Jcustomsys.so
 ## Intel Advisor 2021.3
 
 ![withmodule1.png](pics/withmodule1.png)
-![withmodule1.png](pics/withmodule2.png)
+![withmodule2.png](pics/withmodule2.png)
+![withmodule3.png](pics/withmodule3.png)
 
 You may find a package four your particular Linux distribution or [download Advisor from Intel directly](https://software.intel.com/content/www/us/en/develop/articles/oneapi-standalone-components.html#advisor).
 
