@@ -95,6 +95,17 @@ julia -Jcustomsys.so
 
 ## Intel Advisor 2021.3
 
+```julia
+# a cumsum! implementation (on global variables A and B)
+function test_03()
+  x = B[1] = A[1]
+  for n in 2:length(A)
+    x += A[n]
+    B[n] = x
+  end
+end
+```
+
 ![withmodule1.png](pics/withmodule1.png)
 ![withmodule2.png](pics/withmodule2.png)
 ![withmodule3.png](pics/withmodule3.png)
