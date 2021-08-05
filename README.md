@@ -165,23 +165,23 @@ advisor                                                            \
 ```
 
 ```bash
-advisor                                                                          \
-  `# type of tracing`                                                            \
-  -collect tripcounts                                                            \
-  `# this is a "knob" in the graphical frontend`                                 \
-  -flop                                                                          \
-  `# this is also a "knob" in the graphical frontend`                            \
-  -stacks                                                                        \
-  `# these numbers "are" the loops that will be investigated`                    \
-  `#   the loop enumeration must not change beween runs`                         \
-  `#   i.e. they need to be "discovered" similarly by Advisor`                   \
-  `#     (however this works)`                                                   \
-  -mark-up-list=13,14                                                            \
-  `# the rest is same as before`                                                 \
-  -start-paused                                                                  \
-  -project-dir /home/christianl/intel/advixe/projects/intelitttest               \
-  --search-dir src:p=/usr/share/julia/base                                       \
-  --search-dir src:p=/home/christianl/owncloud/arbeit/julia/IntelITT.jl/examples \
-  --app-working-dir=/home/christianl/owncloud/arbeit/julia/IntelITT.jl/examples  \
-  -- /usr/bin/julia -Jcustomsys.so intelitttest.jl                               \
+advisor                                                            \
+  `# type of tracing`                                              \
+  -collect tripcounts                                              \
+  `# this is a "knob" in the graphical frontend`                   \
+  -flop                                                            \
+  `# this is also a "knob" in the graphical frontend`              \
+  -stacks                                                          \
+  `# these numbers "are" the loops that will be investigated`      \
+  `#   the loop enumeration must not change beween runs`           \
+  `#   i.e. they need to be "discovered" similarly by Advisor`     \
+  `#     (however this works)`                                     \
+  -mark-up-list=13,14                                              \
+  `# the rest is same as before`                                   \
+  -start-paused                                                    \
+  -project-dir /home/christianl/intel/advixe/projects/intelitttest \
+  --search-dir src:p=/usr/share/julia/base                         \
+  --search-dir src:p=/home/christianl/julia/IntelITT.jl/examples   \
+  --app-working-dir=/home/christianl/julia/IntelITT.jl/examples    \
+  -- /usr/bin/julia -Jcustomsys.so intelitttest.jl                 \
 ```
