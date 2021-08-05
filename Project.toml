@@ -1,4 +1,8 @@
 name = "IntelITT"
 uuid = "4a09e4cd-0946-40c7-bf0b-7fff0296c535"
 authors = ["Christian Lehmann <dev@christianl.de>"]
-version = "0.1.0"
+version = "0.2.0"
+
+[deps]
+CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"

@@ -1,0 +1,7 @@
+name = "IntelITTTest"
+uuid = "f45b6773-d232-4913-a5f2-3db9dd62e2b3"
+authors = ["Marcus Christian Lehmann <marcus.c.lehmann@tu-berlin.de>"]
+version = "0.1.0"
+
+[deps]
+IntelITT = "4a09e4cd-0946-40c7-bf0b-7fff0296c535"

@@ -1,3 +1,8 @@
+# readelf -Ws libittnotify/libittnotify.so | grep "__itt" | awk '{ print $8 }' | sort -u > syms.list
+# syms = readlines("syms.list")
+# functions = readlines("functions.list")
+# for x in [ (f in syms ? :mkfn : f * "_ptr__3_0" in syms ? :mkfnptr : :unknown) => f for f in functions ]; println(x); end
+
 @mkfnptr(__itt_pause, Cvoid, ())
 @mkfnptr(__itt_resume, Cvoid, ())
 @mkfnptr(__itt_detach, Cvoid, ())
@@ -46,14 +51,7 @@
 @mkfnptr(__itt_model_disable_push, Cvoid, (__itt_model_disable,), x)
 @mkfnptr(__itt_model_disable_pop, Cvoid, ())
 @mkfnptr(__itt_model_aggregate_task, Cvoid, (Csize_t,), x)
-@mkfnptr(__itt_heap_function_create, __itt_heap_function, (Cstring, Cstring), name, domain)
-@mkfnptr(__itt_heap_allocate_begin, Cvoid, (__itt_heap_function, Csize_t, Cint), h, size, initialized)
-@mkfnptr(__itt_heap_allocate_end, Cvoid, (__itt_heap_function, Ptr{Ptr{Cvoid}}, Csize_t, Cint), h, addr, size, initialized)
-@mkfnptr(__itt_heap_free_begin, Cvoid, (__itt_heap_function, Ptr{Cvoid}), h, addr)
-@mkfnptr(__itt_heap_free_end, Cvoid, (__itt_heap_function, Ptr{Cvoid}), h, addr)
-@mkfnptr(__itt_heap_reallocate_begin, Cvoid, (__itt_heap_function, Ptr{Cvoid}, Csize_t, Cint), h, addr, new_size, initialized)
-@mkfnptr(__itt_heap_reallocate_end, Cvoid, (__itt_heap_function, Ptr{Cvoid}, Ptr{Ptr{Cvoid}}, Csize_t, Cint), h, addr, new_addr, new_size, initialized)
-@mkfnptr(__itt_heap_internal_access_begin, Cvoid, ())
+# @unknown(create, Cvoid, ())
 @mkfnptr(__itt_heap_internal_access_end, Cvoid, ())
 @mkfnptr(__itt_heap_record_memory_growth_begin, Cvoid, ())
 @mkfnptr(__itt_heap_record_memory_growth_end, Cvoid, ())

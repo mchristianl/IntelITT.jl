@@ -56,6 +56,7 @@ const __id_t = UInt32
 const __time_t = Clong
 const __useconds_t = UInt32
 const __suseconds_t = Clong
+const __suseconds64_t = Clong
 const __daddr_t = Cint
 const __key_t = Cint
 const __clockid_t = Cint
@@ -184,12 +185,29 @@ const __itt_heap_record_memory_growth_begin_ptr__3_0_t = Ptr{Cvoid}
 const __itt_heap_record_memory_growth_end_ptr__3_0_t = Ptr{Cvoid}
 const __itt_heap_reset_detection_ptr__3_0_t = Ptr{Cvoid}
 const __itt_heap_record_ptr__3_0_t = Ptr{Cvoid}
+
+struct ___itt_domain
+    flags::Cint
+    nameA::Cstring
+    nameW::Ptr{Cvoid}
+    extra1::Cint
+    extra2::Ptr{Cvoid}
+    next::Ptr{___itt_domain}
+end
+
 const __itt_domain = ___itt_domain
 const __itt_domain_create_ptr__3_0_t = Ptr{Cvoid}
+
+struct ___itt_id
+    d1::Culonglong
+    d2::Culonglong
+    d3::Culonglong
+end
+
 const __itt_id = ___itt_id
 const __itt_id_create_ptr__3_0_t = Ptr{Cvoid}
 const __itt_id_destroy_ptr__3_0_t = Ptr{Cvoid}
-const __itt_string_handle = ___itt_string_handle
+
 const __itt_string_handle_create_ptr__3_0_t = Ptr{Cvoid}
 const __itt_timestamp = Culonglong
 const __itt_get_timestamp_ptr__3_0_t = Ptr{Cvoid}
@@ -249,8 +267,24 @@ end
 
 const __itt_relation_add_to_current_ptr__3_0_t = Ptr{Cvoid}
 const __itt_relation_add_ptr__3_0_t = Ptr{Cvoid}
+
+struct ___itt_clock_info
+    clock_freq::Culonglong
+    clock_base::Culonglong
+end
+
 const __itt_clock_info = ___itt_clock_info
 const __itt_get_clock_info_fn = Ptr{Cvoid}
+
+struct ___itt_clock_domain
+    info::__itt_clock_info
+    fn::__itt_get_clock_info_fn
+    fn_data::Ptr{Cvoid}
+    extra1::Cint
+    extra2::Ptr{Cvoid}
+    next::Ptr{___itt_clock_domain}
+end
+
 const __itt_clock_domain = ___itt_clock_domain
 const __itt_clock_domain_create_ptr__3_0_t = Ptr{Cvoid}
 const __itt_clock_domain_reset_ptr__3_0_t = Ptr{Cvoid}
@@ -278,21 +312,8 @@ const __itt_marker_ex_ptr__3_0_t = Ptr{Cvoid}
 const __itt_relation_add_to_current_ex_ptr__3_0_t = Ptr{Cvoid}
 const __itt_relation_add_ex_ptr__3_0_t = Ptr{Cvoid}
 
-@cenum ___itt_track_group_type::UInt32 begin
-    __itt_track_group_type_normal = 0
-end
 
 
-const __itt_track_group_type = ___itt_track_group_type
-const __itt_track_group = ___itt_track_group
-
-@cenum ___itt_track_type::UInt32 begin
-    __itt_track_type_normal = 0
-end
-
-
-const __itt_track_type = ___itt_track_type
-const __itt_track = ___itt_track
 const __itt_track_group_create_ptr__3_0_t = Ptr{Cvoid}
 const __itt_track_create_ptr__3_0_t = Ptr{Cvoid}
 const __itt_set_track_ptr__3_0_t = Ptr{Cvoid}
@@ -336,7 +357,28 @@ end
 end
 
 
+struct ___itt_section_info
+    name::Cstring
+    type::__itt_section_type
+    flags::Csize_t
+    start_addr::Ptr{Cvoid}
+    size::Csize_t
+    file_offset::Csize_t
+end
+
 const __itt_section_info = ___itt_section_info
+
+struct ___itt_module_object
+    version::UInt32
+    module_id::__itt_id
+    module_type::__itt_module_type
+    module_name::Cstring
+    module_buffer::Ptr{Cvoid}
+    module_size::Csize_t
+    section_array::Ptr{__itt_section_info}
+    section_number::Csize_t
+end
+
 const __itt_module_object = ___itt_module_object
 const __itt_module_load_with_sections_ptr__3_0_t = Ptr{Cvoid}
 const __itt_module_unload_with_sections_ptr__3_0_t = Ptr{Cvoid}

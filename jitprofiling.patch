@@ -1,0 +1,35 @@
+--- a/src/init.c	2021-07-14 17:37:23.000000000 +0200
++++ b/src/init.c	2021-08-05 12:59:35.678029124 +0200
+@@ -687,24 +687,19 @@
+ #endif
+ #endif
+ 
+-#if defined(JL_USE_INTEL_JITEVENTS)
++#define JIT_PROFILING_ENABLED (defined(JL_USE_INTEL_JITEVENTS) || defined(JL_USE_OPROFILE_JITEVENTS) || defined(JL_USE_PERF_JITEVENTS))
++#if JIT_PROFILING_ENABLED
+     const char *jit_profiling = getenv("ENABLE_JITPROFILING");
+     if (jit_profiling && atoi(jit_profiling)) {
++    #if defined(JL_USE_INTEL_JITEVENTS)
+         jl_using_intel_jitevents = 1;
+-    }
+-#endif
+-
+-#if defined(JL_USE_OPROFILE_JITEVENTS)
+-    const char *jit_profiling = getenv("ENABLE_JITPROFILING");
+-    if (jit_profiling && atoi(jit_profiling)) {
++    #endif
++    #if defined(JL_USE_OPROFILE_JITEVENTS)
+         jl_using_oprofile_jitevents = 1;
+-    }
+-#endif
+-
+-#if defined(JL_USE_PERF_JITEVENTS)
+-    const char *jit_profiling = getenv("ENABLE_JITPROFILING");
+-    if (jit_profiling && atoi(jit_profiling)) {
++    #endif
++    #if defined(JL_USE_PERF_JITEVENTS)
+         jl_using_perf_jitevents= 1;
++    #endif
+     }
+ #endif
+ 
