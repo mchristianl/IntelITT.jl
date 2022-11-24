@@ -1,3 +1,6 @@
+**UPDATE** 2022 Nov 24: this repository was archived in favor of [JuliaPerf/IntelITT.jl](https://github.com/JuliaPerf/IntelITT.jl)
+
+---
 
 (WARNING: proof of concept! Times this was tested: 1½)
 
